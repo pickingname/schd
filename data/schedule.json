@@ -1,0 +1,49 @@
+{
+  "classes": [
+    {
+      "id": "math-101",
+      "subject": "Mathematics",
+      "startTime": "09:00",
+      "endTime": "10:30",
+      "teacher": "Dr. Sarah Chen",
+      "classCode": "P",
+      "days": [1, 3, 5]
+    },
+    {
+      "id": "phys-201",
+      "subject": "Physics",
+      "startTime": "11:00",
+      "endTime": "12:30",
+      "teacher": "Prof. James Wilson",
+      "classCode": "R",
+      "days": [1, 3]
+    },
+    {
+      "id": "chem-101",
+      "subject": "Chemistry",
+      "startTime": "13:30",
+      "endTime": "15:00",
+      "teacher": "Dr. Emily Brown",
+      "classCode": "O",
+      "days": [2, 4]
+    },
+    {
+      "id": "bio-301",
+      "subject": "Biology",
+      "startTime": "15:30",
+      "endTime": "17:00",
+      "teacher": "Prof. Michael Lee",
+      "classCode": "Y",
+      "days": [1, 3, 5]
+    },
+    {
+      "id": "cs-201",
+      "subject": "Computer Science",
+      "startTime": "09:30",
+      "endTime": "11:00",
+      "teacher": "Dr. Robert Taylor",
+      "classCode": "G",
+      "days": [2, 4]
+    }
+  ]
+}
