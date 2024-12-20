@@ -19,7 +19,15 @@ const codeColors = {
   G: "bg-green-500/10 text-green-500 ring-green-500/20",
 };
 
-const dayNames = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+const dayNames = [
+  "Sunday",
+  "Monday",
+  "Tuesday",
+  "Wednesday",
+  "Thursday",
+  "Friday",
+  "Saturday",
+];
 
 export function ClassCard({ class: classItem, timeStatus }: ClassCardProps) {
   const totalMinutes = differenceInMinutes(
@@ -63,10 +71,10 @@ export function ClassCard({ class: classItem, timeStatus }: ClassCardProps) {
           </div>
         </div>
 
-        <div className="space-y-2 opacity-0 transition-opacity group-hover:opacity-100">
+        <div className="space-y-2 opacity-100 transition-opacity">
           <div className="flex items-center space-x-2 text-sm text-muted-foreground">
             <Calendar className="h-4 w-4" />
-            <span>{classItem.days.map(day => dayNames[day]).join(", ")}</span>
+            <span>{classItem.days.map((day) => dayNames[day]).join(", ")}</span>
           </div>
           <div className="text-sm text-muted-foreground">
             Duration: {formatDuration(totalMinutes)}
@@ -81,7 +89,10 @@ export function ClassCard({ class: classItem, timeStatus }: ClassCardProps) {
         {timeStatus.isActive && (
           <div className="space-y-2">
             <div className="text-sm text-primary font-medium">
-              {formatTimeLeft(parseInt(timeStatus.timeRemaining!), classItem.subject)}
+              {formatTimeLeft(
+                parseInt(timeStatus.timeRemaining!),
+                classItem.subject
+              )}
             </div>
             <div className="relative h-1.5 rounded-full bg-primary/20">
               <div
