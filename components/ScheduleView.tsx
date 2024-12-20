@@ -65,10 +65,7 @@ export function ScheduleView({ classes }: ScheduleViewProps) {
   return (
     <div className="min-h-screen bg-background p-4">
       <div className="mx-auto max-w-3xl space-y-8">
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">{/* insert titles here */}</h1>
-          <TimeDisplay />
-        </div>
+        <TimeDisplay classes={classes} />
 
         <div ref={containerRef} className="space-y-4">
           {todayClasses.map((classItem) => {
