@@ -50,39 +50,36 @@ export function ScheduleView({ classes }: ScheduleViewProps) {
   };
 
   useEffect(() => {
-    const activeClass = containerRef.current?.querySelector('[data-active="true"]');
+    const activeClass = containerRef.current?.querySelector(
+      '[data-active="true"]'
+    );
     if (activeClass) {
       activeClass.scrollIntoView({ behavior: "smooth", block: "center" });
     }
   }, [currentTime]);
 
-  const todayClasses = classes.filter(c => 
-    c.days.includes(currentTime.getDay())
-  ).sort((a, b) => 
-    a.startTime.localeCompare(b.startTime)
-  );
+  const todayClasses = classes
+    .filter((c) => c.days.includes(currentTime.getDay()))
+    .sort((a, b) => a.startTime.localeCompare(b.startTime));
 
   return (
     <div className="min-h-screen bg-background p-4">
       <div className="mx-auto max-w-3xl space-y-8">
         <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Today's Schedule</h1>
+          <h1 className="text-2xl font-bold">{/* insert titles here */}</h1>
           <TimeDisplay />
         </div>
-        
+
         <div ref={containerRef} className="space-y-4">
           {todayClasses.map((classItem) => {
             const timeStatus = calculateTimeStatus(classItem);
             return (
               <div key={classItem.id} data-active={timeStatus.isActive}>
-                <ClassCard
-                  class={classItem}
-                  timeStatus={timeStatus}
-                />
+                <ClassCard class={classItem} timeStatus={timeStatus} />
               </div>
             );
           })}
-          
+
           {todayClasses.length === 0 && (
             <div className="text-center text-muted-foreground py-8">
               No classes scheduled for today

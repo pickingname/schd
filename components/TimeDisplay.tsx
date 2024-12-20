@@ -6,11 +6,17 @@ import { cn } from "@/lib/utils";
 
 export function TimeDisplay() {
   const [time, setTime] = useState(new Date());
+  const [isMounted, setIsMounted] = useState(false);
 
   useEffect(() => {
+    setIsMounted(true);
     const timer = setInterval(() => setTime(new Date()), 1000);
     return () => clearInterval(timer);
   }, []);
+
+  if (!isMounted) {
+    return null;
+  }
 
   return (
     <div className="font-mono text-sm space-y-1">

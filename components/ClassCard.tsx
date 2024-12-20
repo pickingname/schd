@@ -26,22 +26,15 @@ export function ClassCard({ class: classItem, timeStatus }: ClassCardProps) {
         timeStatus.isPast && "opacity-50"
       )}
     >
-      {timeStatus.isActive && (
-        <div className="absolute inset-x-0 bottom-0 h-1 rounded-full bg-primary/20">
-          <div
-            className="h-full rounded-full bg-primary transition-all"
-            style={{ width: `${timeStatus.progress}%` }}
-          />
-        </div>
-      )}
-      
       <div className="flex items-start justify-between">
         <div className="space-y-1">
           <div className="flex items-center gap-2">
-            <span className={cn(
-              "inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset",
-              codeColors[classItem.classCode]
-            )}>
+            <span
+              className={cn(
+                "inline-flex items-center rounded-md px-2 py-1 text-xs font-medium ring-1 ring-inset",
+                codeColors[classItem.classCode]
+              )}
+            >
               {classItem.classCode}
             </span>
             <h3 className="font-semibold leading-none tracking-tight">
@@ -51,21 +44,32 @@ export function ClassCard({ class: classItem, timeStatus }: ClassCardProps) {
           <p className="text-sm text-muted-foreground">{classItem.teacher}</p>
         </div>
         <div className="text-sm text-muted-foreground">
-          {format(parseISO(`2024-01-01T${classItem.startTime}`), "h:mm a")} -{" "}
+          {format(parseISO(`2024-01-01T${classItem.startTime}`), "h:mm a")}{" "}
+          {" to "}
           {format(parseISO(`2024-01-01T${classItem.endTime}`), "h:mm a")}
         </div>
       </div>
-      
+
       {timeStatus.isActive && timeStatus.timeRemaining && (
         <div className="mt-2 text-sm text-muted-foreground">
           {timeStatus.timeRemaining} remaining
         </div>
       )}
-      {!timeStatus.isActive && timeStatus.timeUntilNext && !timeStatus.isPast && (
-        <div className="mt-2 text-sm text-muted-foreground">
-          Starts in {timeStatus.timeUntilNext}
+      {timeStatus.isActive && (
+        <div className="relative mt-1 h-1 rounded-full bg-primary/20">
+          <div
+            className="h-full rounded-full bg-primary transition-all"
+            style={{ width: `${timeStatus.progress}%` }}
+          />
         </div>
       )}
+      {!timeStatus.isActive &&
+        timeStatus.timeUntilNext &&
+        !timeStatus.isPast && (
+          <div className="mt-2 text-sm text-muted-foreground">
+            Starts in {timeStatus.timeUntilNext}
+          </div>
+        )}
     </div>
   );
 }
